@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>videós holdas</title>
+<!-- <link href="stylesheet.css" rel="stylesheet" type="text/css"> -->
+<style> 
+	@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+	html,body{		
+		height:100%;
+		margin:0;
+		overflow: hidden; 
+		color:white;
+		font-family: arial;
+		display: flex; 
+		flex-direction:column;
+		}
+	.pirosvonal{
+		border: 1px solid red;
+		}
+		
+	.container{
+			display: flex;
+			flex-grow: 1;						
+			justify-content: center;
+			align-items: center;
+			flex-direction:column;			
+			}
+			
+	.fejlec{
+			display: flex;
+			justify-content: center;}	
+	
+	.lablec{
+			display: flex;
+			justify-content: center;
+			}
+	
+	.hatterkep{
+			background-image: url(hold.jpg);enter
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+			}
+			
+	.hattervideo{
+			position: absolute;
+			z-index: -100;
+			min-width: 100%;
+			min-height: 100%;
+			width: auto;
+			height: auto;			
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			}	
+	a{
+		color:white;
+		text-decoration:none;		
+			}
+	.fejleclink{
+			margin:10px 20px;
+			}
+	.oriasbetu{
+			font-family: 'Work sans';
+			font-size: 40px;
+			text-align:center;
+			}
+
+	.gomblink{
+			background: rgba(0,0,0,0.5);
+			padding: 10px;
+			margin: 10px;
+			width: 150px;
+			display: inline-block;
+			text-align:center;
+			}
+	.gomblink:hover{
+			border: 1px solid white;
+			transition-duration: 0.5s;
+			}
+			
+	.gombdoboz{
+			text-align:center;
+			}
+			
+	@media(max-width:767px){
+			.gomblink{background-color:grey;}
+			
+			.oriasbetu{color:yellow;}
+			}
+			
+	@media(max-height:450px){
+			.lablec{display:none}
+			}
+</style>
+
+<!--style_HELP
+overflow: így a lent túllógást levágtuk
+display:flex= magától felosztja az arányokat, alapértelmezetten egymás mellé, ezért
+				kell a column, azaz hogy egymásalatt legyenek
+				Minden dobozt külön kell vezérelni, nem öröklődik!
+				
+flex-grow: default=0, ha beállítjuk1 re,
+			akkor az adott rész kitölt minden lehetséges helyet, míg a többi, csak amennyi kell
+
+justify-content: vízszintes koordinálás
+align-items= függőleges koordinálás
+
+talpatlan (sans Serif) betűtípusok nem alapértelmezettek (az arial igen) -> fonts.google.com-ban van egy gyűjtemény, ezt hívom be
+		fontos, hogy be kell kapcsolni a latin-extended módot a magyar betűkhöz
+
+VIDEO:
+position:absolut -> azért, hogy én mondjam meg, , hogy hol legyenek
+z-index: -100 => hátraküldi a háttérbe
+
+
+GOMB
+	display:inline-block; felveszi a szöveget egy sorba, de blokként kezeli, így tudom egyforma szélességű gombokat létrehozni
+-->
+</head>
+
+<body class="hatterkep">
+	<video class="hattervideo" autoplay loop muted poster="hold.jpg" src="Milky Way.mp4"></video> <!--ez lesz a háttérvideo-->
+
+	<div class="fejlec">
+		<a class="fejleclink" href="../hold_index.html">Hold</a>
+		<a class="fejleclink" href="../05.urlap.html">Bolygók</a>
+		<a class="fejleclink" href="../02.masik">Nap</a>
+	</div>
+	
+	<div class=" container">	
+		<div class="oriasbetu">ÚJDONSÁGOK AZ ŰRBŐL</div>
+		<div class="gombdoboz">
+			<a class="gomblink" href="../hold_index.html">CSILAGÁSZAT</a>
+			<a class="gomblink" href="../05.urlap.html">ŰRKUTATÁS</a>
+			<a class="gomblink" href="../02.masik">ŰRTÖRTÉNELEM</a>
+						
+		</div>
+	</div>
+	
+	<div class="lablec ">&copy; L 2020-<span id="lablec_datum">xx</span></div>
+	<script>
+		var d = new Date();
+		var n = d.getFullYear();
+		document.getElementById("lablec_datum").innerHTML = n;	
+	</script>
+</body>
+
+</html>   
